@@ -1,0 +1,330 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* San Francisco Header Typography */
+header,
+header button,
+header span,
+h1, h2, h3, h4, h5, h6,
+.font-sf,
+.sf-header,
+.ticket-title {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif !important;
+  letter-spacing: -0.025em;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+}
+
+/* ==========================================================================
+   WARM KHATA & FINTECH PALETTE (from Hisaab/DESIGN-SYSTEM.md)
+   Inspired by Traditional Indian Ledger (बहीखाता) + Apple iOS Minimalism
+   ========================================================================== */
+:root,
+:root[data-palette="1"],
+:root:not([data-palette]) {
+  /* Surfaces: Warm Parchment (Khata) Scale */
+  --app-bg: #fdfbf7;        /* khata-50: Main Warm Ledger Parchment Background */
+  --card-bg: #ffffff;       /* Pure Card Surface on Warm Ledger */
+  --card-border: #ede2d3;   /* khata-200: Borders & Dividers */
+  --hours-bg: #f7f2ea;      /* khata-100: Soft Header / Metadata Track */
+  --hours-text: #644d3b;    /* khata-800: High-Readability Warm Neutral */
+  
+  /* Typography: High-Contrast Khata Scale */
+  --text-primary: #4a3a2d;   /* khata-900: Primary Text (passes 10.5:1 AAA contrast) */
+  --text-secondary: #7e6047; /* khata-700: Subtitles, timestamps & metadata */
+  
+  /* Primary Brand: Warm Indian Amber / Brass */
+  --accent-primary: #b45309;       /* primary.DEFAULT: Warm Amber / Brass */
+  --accent-primary-hover: #92400e; /* primary.dark: Hover & active pressed */
+  --accent-primary-text: #ffffff;  /* High contrast white text on amber */
+  
+  /* Navigation & Segmented Switcher */
+  --nav-track-bg: #ede2d3;   /* khata-200: Warm Neutral Track */
+  --nav-active-bg: #ffffff;  /* Elevated active card */
+  --nav-active-text: #b45309;/* primary.DEFAULT: Active tab */
+  --nav-inactive-text: #7e6047;/* khata-700 */
+  
+  /* Chat Bubbles */
+  --bubble-bot-bg: #ffffff;
+  --bubble-bot-border: #ede2d3;   /* khata-200 */
+  --bubble-bot-text: #4a3a2d;     /* khata-900 */
+  --bubble-staff-bg: #fef3c7;     /* primary.light: Warm amber highlight */
+  --bubble-staff-border: #dfcdb6; /* khata-300 */
+  --bubble-staff-text: #78350f;   /* primary.deep: High-contrast amber text */
+  
+  /* Emergency: Deep Crimson (credit / debt urgency) */
+  --emergency-bg: #b91c1c;        /* credit.DEFAULT: Deep Crimson */
+  --emergency-hover: #991b1b;     /* credit.dark */
+  --emergency-text: #ffffff;
+  
+  /* Action Chips & Text Inputs */
+  --chip-bg: #ffffff;
+  --chip-border: #ede2d3;         /* khata-200 */
+  --chip-text: #4a3a2d;           /* khata-900 */
+  --input-bg: #fdfbf7;            /* khata-50: Warm parchment */
+  --input-text: #4a3a2d;          /* khata-900 */
+  --input-border: #dfcdb6;        /* khata-300 */
+  --input-focus-border: #b45309;  /* primary.DEFAULT */
+  
+  /* Financial & Triage Status Semantics */
+  --status-urgent-bg: #b91c1c;    /* credit.DEFAULT: Deep Crimson */
+  --status-urgent-text: #ffffff;
+  --status-human-bg: #b45309;     /* primary.DEFAULT: Warm Amber */
+  --status-human-text: #ffffff;
+  --status-answered-bg: #15803d;  /* payment.DEFAULT: Forest Emerald */
+  --status-answered-text: #ffffff;
+}
+
+:root.dark,
+:root[data-palette="1"].dark,
+:root:not([data-palette]).dark {
+  /* Surfaces: Dark Charcoal Zinc Scale (Zero-glare) */
+  --app-bg: #18181b;        /* surface.root: zinc-900 */
+  --card-bg: #27272a;       /* surface.card: zinc-800 */
+  --card-border: #3f3f46;   /* surface.border: zinc-700 */
+  --hours-bg: #27272a;      /* zinc-800 */
+  --hours-text: #d4d4d8;    /* zinc-300 */
+  
+  /* Typography */
+  --text-primary: #f4f4f5;   /* zinc-100: AAA Contrast (16:1) */
+  --text-secondary: #a1a1aa; /* zinc-400 */
+  
+  /* Primary Brand in Dark Mode: Luminous Warm Amber */
+  --accent-primary: #d97706;       /* Warm amber */
+  --accent-primary-hover: #b45309;
+  --accent-primary-text: #ffffff;
+  
+  /* Navigation & Segmented Switcher */
+  --nav-track-bg: #1f1f23;
+  --nav-active-bg: #27272a;
+  --nav-active-text: #fbbf24;
+  --nav-inactive-text: #a1a1aa;
+  
+  /* Chat Bubbles */
+  --bubble-bot-bg: #27272a;
+  --bubble-bot-border: #3f3f46;
+  --bubble-bot-text: #f4f4f5;
+  --bubble-staff-bg: #382307;
+  --bubble-staff-border: #92400e;
+  --bubble-staff-text: #fef3c7;
+  
+  /* Emergency: Crimson Urgency */
+  --emergency-bg: #dc2626;
+  --emergency-hover: #b91c1c;
+  --emergency-text: #ffffff;
+  
+  /* Action Chips & Text Inputs */
+  --chip-bg: #27272a;
+  --chip-border: #3f3f46;
+  --chip-text: #f4f4f5;
+  --input-bg: #1f1f23;
+  --input-text: #f4f4f5;
+  --input-border: #3f3f46;
+  --input-focus-border: #fbbf24;
+  
+  /* Financial & Triage Status Semantics */
+  --status-urgent-bg: #dc2626;
+  --status-urgent-text: #ffffff;
+  --status-human-bg: #d97706;
+  --status-human-text: #ffffff;
+  --status-answered-bg: #15803d;
+  --status-answered-text: #ffffff;
+}
+
+/* ==========================================================================
+   PALETTE OPTION 2: Warm Humanist / Studio Ceramic
+   ========================================================================== */
+:root[data-palette="2"] {
+  --app-bg: #FAF9F6;
+  --card-bg: #FFFFFF;
+  --card-border: #E7E5E0;
+  --text-primary: #1C1917;
+  --text-secondary: #78716C;
+  --accent-primary: #0D9488;
+  --accent-primary-hover: #0F766E;
+  --accent-primary-text: #FFFFFF;
+  --nav-track-bg: #E7E5E0;
+  --nav-active-bg: #FFFFFF;
+  --nav-active-text: #0D9488;
+  --nav-inactive-text: #78716C;
+  --hours-bg: #F4F3F0;
+  --hours-text: #57534E;
+  --bubble-bot-bg: #FFFFFF;
+  --bubble-bot-border: #E7E5E0;
+  --bubble-bot-text: #1C1917;
+  --bubble-staff-bg: #FEF3C7;
+  --bubble-staff-border: #F59E0B;
+  --bubble-staff-text: #78350F;
+  --emergency-bg: #DC2626;
+  --emergency-hover: #B91C1C;
+  --emergency-text: #FFFFFF;
+  --chip-bg: #FFFFFF;
+  --chip-border: #E7E5E0;
+  --chip-text: #1C1917;
+  --input-bg: #F4F3F0;
+  --input-text: #1C1917;
+  --input-border: #E7E5E0;
+  --input-focus-border: #0D9488;
+  --status-urgent-bg: #DC2626;
+  --status-urgent-text: #FFFFFF;
+  --status-human-bg: #EA580C;
+  --status-human-text: #FFFFFF;
+  --status-answered-bg: #059669;
+  --status-answered-text: #FFFFFF;
+}
+
+:root[data-palette="2"].dark {
+  --app-bg: #0E0E10;
+  --card-bg: #18181B;
+  --card-border: #27272A;
+  --text-primary: #F5F5F4;
+  --text-secondary: #A8A29E;
+  --accent-primary: #14B8A6;
+  --accent-primary-hover: #2DD4BF;
+  --accent-primary-text: #042F2E;
+  --nav-track-bg: #27272A;
+  --nav-active-bg: #18181B;
+  --nav-active-text: #14B8A6;
+  --nav-inactive-text: #A8A29E;
+  --hours-bg: #1C1917;
+  --hours-text: #D6D3D1;
+  --bubble-bot-bg: #1C1917;
+  --bubble-bot-border: #292524;
+  --bubble-bot-text: #F5F5F4;
+  --bubble-staff-bg: #322004;
+  --bubble-staff-border: #B45309;
+  --bubble-staff-text: #FDE68A;
+  --emergency-bg: #EF4444;
+  --emergency-hover: #DC2626;
+  --emergency-text: #FFFFFF;
+  --chip-bg: #262626;
+  --chip-border: #3F3F46;
+  --chip-text: #F5F5F4;
+  --input-bg: #18181B;
+  --input-text: #F5F5F4;
+  --input-border: #27272A;
+  --input-focus-border: #14B8A6;
+  --status-urgent-bg: #EF4444;
+  --status-urgent-text: #FFFFFF;
+  --status-human-bg: #F97316;
+  --status-human-text: #FFFFFF;
+  --status-answered-bg: #10B981;
+  --status-answered-text: #FFFFFF;
+}
+
+/* ==========================================================================
+   PALETTE OPTION 3: Midnight Titanium / Pro Studio
+   ========================================================================== */
+:root[data-palette="3"] {
+  --app-bg: #F2F2F7;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E5EA;
+  --text-primary: #1C1C1E;
+  --text-secondary: #6E6E73;
+  --accent-primary: #1C1C1E;
+  --accent-primary-hover: #000000;
+  --accent-primary-text: #FFFFFF;
+  --nav-track-bg: #E5E5EA;
+  --nav-active-bg: #1C1C1E;
+  --nav-active-text: #FFFFFF;
+  --nav-inactive-text: #6E6E73;
+  --hours-bg: #F2F2F7;
+  --hours-text: #3A3A3C;
+  --bubble-bot-bg: #FFFFFF;
+  --bubble-bot-border: #E5E5EA;
+  --bubble-bot-text: #1C1C1E;
+  --bubble-staff-bg: #FFFBEB;
+  --bubble-staff-border: #F59E0B;
+  --bubble-staff-text: #78350F;
+  --emergency-bg: #E11D48;
+  --emergency-hover: #BE123C;
+  --emergency-text: #FFFFFF;
+  --chip-bg: #FFFFFF;
+  --chip-border: #D1D1D6;
+  --chip-text: #1C1C1E;
+  --input-bg: #F2F2F7;
+  --input-text: #1C1C1E;
+  --input-border: #E5E5EA;
+  --input-focus-border: #1C1C1E;
+  --status-urgent-bg: #E11D48;
+  --status-urgent-text: #FFFFFF;
+  --status-human-bg: #F59E0B;
+  --status-human-text: #FFFFFF;
+  --status-answered-bg: #10B981;
+  --status-answered-text: #FFFFFF;
+}
+
+:root[data-palette="3"].dark {
+  --app-bg: #080809;
+  --card-bg: #121214;
+  --card-border: #222226;
+  --text-primary: #FFFFFF;
+  --text-secondary: #86868B;
+  --accent-primary: #2C2C2E;
+  --accent-primary-hover: #3A3A3C;
+  --accent-primary-text: #FFFFFF;
+  --nav-track-bg: #1C1C1E;
+  --nav-active-bg: #222226;
+  --nav-active-text: #FFFFFF;
+  --nav-inactive-text: #86868B;
+  --hours-bg: #141416;
+  --hours-text: #A1A1A6;
+  --bubble-bot-bg: #141416;
+  --bubble-bot-border: #222225;
+  --bubble-bot-text: #FFFFFF;
+  --bubble-staff-bg: #2E1E05;
+  --bubble-staff-border: #D97706;
+  --bubble-staff-text: #FDE68A;
+  --emergency-bg: #F43F5E;
+  --emergency-hover: #E11D48;
+  --emergency-text: #FFFFFF;
+  --chip-bg: #18181B;
+  --chip-border: #27272A;
+  --chip-text: #FFFFFF;
+  --input-bg: #141416;
+  --input-text: #FFFFFF;
+  --input-border: #222226;
+  --input-focus-border: #FFFFFF;
+  --status-urgent-bg: #F43F5E;
+  --status-urgent-text: #FFFFFF;
+  --status-human-bg: #FBBF24;
+  --status-human-text: #1C1C1E;
+  --status-answered-bg: #34D399;
+  --status-answered-text: #064E3B;
+}
+
+/* Custom utility for hiding scrollbars while allowing smooth scrolling */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile-first touch targets */
+button, input, textarea, select {
+  touch-action: manipulation;
+}
+
+/* Automated testing contract compliance */
+.bot-msg {
+  word-break: break-word;
+}
